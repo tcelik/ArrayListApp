@@ -14,6 +14,15 @@ public class ArrayUtil {
     //comma
     public static String toString(int[] a)
     {
+        //Asla kontrol etmeyi unutma, null pointer exception.
+        if (a == null) //adres karşılaştırması yapar
+            return "null";
+
+        //Eğer dizinin eleman sayısı 0 ise -> int [] t = new int[0];
+        int iMax = a.length - 1; //9 indexMax
+        if (iMax == -1)
+            return "[]";
+
         //[4, 8, 3, 1, 18, 9, 21, 20, 5, 17]
         StringBuilder result = new StringBuilder();
         result.append("[");

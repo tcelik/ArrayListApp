@@ -14,9 +14,21 @@ public class ArrayUtil {
     //comma
     public static String toString(int[] a)
     {
-        String result = "";
+        //[4, 8, 3, 1, 18, 9, 21, 20, 5, 17]
+        StringBuilder result = new StringBuilder();
+        result.append("[");
 
+        int index = 0;
+        for (int val : a) {
+            index++;
+            if (!(index == a.length))
+                result.append(val + ", ");
+            else
+                result.append(val);
+        }
 
-        return result;
+        result.append("]");
+
+        return result.toString();
     }
 }

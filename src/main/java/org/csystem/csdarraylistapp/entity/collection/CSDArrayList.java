@@ -1,17 +1,25 @@
 package org.csystem.csdarraylistapp.entity.collection;
 
 public class CSDArrayList {
-    private int m_index;
-    private int m_capacity;
-    private Object [] m_elems;
+    private Object [] m_elems; //elemanlarımın tutululduğu object dizisi.
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public CSDArrayList(int capacity)
+    public CSDArrayList()
     {
-        m_capacity = capacity;
-        m_elems = new Object[capacity];
+        this(DEFAULT_CAPACITY);
     }
 
-    public boolean add(Object elem)
+    public CSDArrayList(int initialCapacity) throws IllegalArgumentException
+    {
+        //control point -> exception
+        if (initialCapacity < 0)
+            throw new IllegalArgumentException("initialCapacity must be higher or equal zero");
+
+        //eğer exception fırlatılmaz ise buradayım.
+        m_elems = new Object[initialCapacity == 0 ? DEFAULT_CAPACITY : initialCapacity];
+    }
+
+    /*public boolean add(Object elem)
     {
         if (m_index == m_capacity)
             allocate();
@@ -30,5 +38,5 @@ public class CSDArrayList {
             result[i] = m_elems[i];
         }
         m_elems = result;
-    }
+    }*/
 }

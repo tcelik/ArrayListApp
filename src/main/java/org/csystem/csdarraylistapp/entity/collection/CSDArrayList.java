@@ -6,6 +6,17 @@ public class CSDArrayList {
     private static final int DEFAULT_CAPACITY = 10;
     private int m_index;
 
+    private void allocateCapacity(int capacity)
+    {
+        Object [] temp = new Object[capacity];
+
+        for (int i = 0; i < m_elems.length; ++i) {
+            temp[i] = m_elems[i];
+        }
+
+        m_elems = temp;
+    }
+
     public CSDArrayList()
     {
         this(DEFAULT_CAPACITY);
@@ -32,16 +43,16 @@ public class CSDArrayList {
         return true;
     }
 
-
-
-    private void allocateCapacity(int capacity)
+    public int capacity()
     {
-        Object [] temp = new Object[capacity];
+        return m_elems.length;
+    }
 
-        for (int i = 0; i < m_elems.length; ++i) {
-            temp[i] = m_elems[i];
-        }
-
-        m_elems = temp;
+    public void clear()
+    {
+        //m_elems = new Object[m_elems.length];
+        for (int i = 0; i < m_index; ++i)
+            m_elems[i] = null;
+        m_index = 0;
     }
 }

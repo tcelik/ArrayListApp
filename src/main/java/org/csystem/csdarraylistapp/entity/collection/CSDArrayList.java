@@ -1,8 +1,10 @@
 package org.csystem.csdarraylistapp.entity.collection;
 
+//Object [] dizisi tutan bir veri yapısı.
 public class CSDArrayList {
     private Object [] m_elems; //elemanlarımın tutululduğu object dizisi.
     private static final int DEFAULT_CAPACITY = 10;
+    private int m_index;
 
     public CSDArrayList()
     {
@@ -19,24 +21,27 @@ public class CSDArrayList {
         m_elems = new Object[initialCapacity == 0 ? DEFAULT_CAPACITY : initialCapacity];
     }
 
-    /*public boolean add(Object elem)
+    public boolean add(Object elem)
     {
-        if (m_index == m_capacity)
-            allocate();
+        //kontrol elem null ise gibi
+        if (m_index == m_elems.length)
+            this.allocateCapacity(m_elems.length * 2);
 
+        //gelen elemanı diziye ekle
         m_elems[m_index++] = elem;
         return true;
     }
 
-    private void allocate()
-    {
 
-        m_capacity = m_capacity * 2;
-        Object [] result = new Object[m_capacity];
+
+    private void allocateCapacity(int capacity)
+    {
+        Object [] temp = new Object[capacity];
 
         for (int i = 0; i < m_elems.length; ++i) {
-            result[i] = m_elems[i];
+            temp[i] = m_elems[i];
         }
-        m_elems = result;
-    }*/
+
+        m_elems = temp;
+    }
 }

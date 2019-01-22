@@ -10,7 +10,7 @@ public class CSDArrayList {
     {
         Object [] temp = new Object[capacity];
 
-        for (int i = 0; i < m_elems.length; ++i) {
+        for (int i = 0; i < m_index; ++i) {
             temp[i] = m_elems[i];
         }
 
@@ -54,5 +54,31 @@ public class CSDArrayList {
         for (int i = 0; i < m_index; ++i)
             m_elems[i] = null;
         m_index = 0;
+    }
+
+    public int size()
+    {
+        return m_index;
+    }
+
+    public Object get(int index) throws IndexOutOfBoundsException
+    {
+        //kontrol point
+        if (index < 0)
+            throw new IndexOutOfBoundsException("index < 0 || index >= size()");
+
+        return m_elems[index];
+    }
+
+    public boolean isEmpty()
+    {
+        return m_index == 0;
+    }
+
+    public void trimToSize()
+    {
+        if (m_index == m_elems.length)
+            return;
+        allocateCapacity(m_index == 0 ? DEFAULT_CAPACITY : m_index);
     }
 }

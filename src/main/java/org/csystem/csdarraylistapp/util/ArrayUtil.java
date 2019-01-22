@@ -28,6 +28,7 @@ public class ArrayUtil {
         result.append("[");
 
         int index = 0;
+
         for (int val : a) {
             index++;
             if (!(index == a.length))
